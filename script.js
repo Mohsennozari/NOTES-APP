@@ -8,7 +8,7 @@ function showNotes() {
 showNotes();
 
 function updateStotage() {
-    localStorage.setItem("notes", notesContainer.innerHTML)
+    localStorage.setItem("notes", notesContainer.innerHTML);
 }
 
 createBtn.addEventListener("click", () => {
@@ -25,8 +25,7 @@ notesContainer.addEventListener("click", function(e) {
     if (e.target.tagName === "IMG") {
         e.target.parentElement.remove();
         updateStotage();
-    } else if (
-        e.target.tagName === "p") {
+    } else if (e.target.tagName === "P") {
         notes = document.querySelectorAll(".input-box");
         notes.forEach(nt => {
             nt.onkeyup = function() {
@@ -36,4 +35,10 @@ notesContainer.addEventListener("click", function(e) {
         })
     }
 
+})
+document.addEventListener("keydown", event => {
+    if (event.key === "Enter") {
+        document.execCommand("insertLineBreak");
+        event.preventDefault();
+    }
 })
